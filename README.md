@@ -8,6 +8,16 @@ celular usa esse proxy e as conexões saem do PC, portanto pela VPN.
 celular ──Wi-Fi──▶ PC (proxy :8083) ──VPN──▶ sistemas da empresa
 ```
 
+## Baixar
+
+**[Baixar o Ponte.exe](https://github.com/RonaldoAzevedo/ponte/releases/latest/download/Ponte.exe)**
+(última versão, Windows). Não precisa instalar: é só abrir. O `.zip` com o guia
+`LEIA-ME.txt` e as versões anteriores ficam em
+[Releases](https://github.com/RonaldoAzevedo/ponte/releases).
+
+Na primeira vez o Windows pode mostrar "O Windows protegeu o computador": clique em
+**Mais informações → Executar assim mesmo** (o programa não tem assinatura digital).
+
 ## Uso
 
 1. Conecte a VPN no PC e deixe o celular no **mesmo Wi-Fi**.
@@ -130,6 +140,11 @@ python -m venv .venv
 .\.venv\Scripts\python -m pytest -q   # testes
 powershell -ExecutionPolicy Bypass -File .\build.ps1   # gera dist\Ponte.exe
 ```
+
+**Publicar uma versão:** suba `__version__` em `vpnbridge/__init__.py`, faça o commit e
+envie a tag com o mesmo número (`git tag v1.9.0` e `git push origin v1.9.0`). O GitHub
+Actions (`.github/workflows/release.yml`) roda os testes, gera o `.exe` numa máquina
+Windows limpa e publica o `Ponte.exe` e o `.zip` em Releases.
 
 | Arquivo | Conteúdo |
 |---|---|

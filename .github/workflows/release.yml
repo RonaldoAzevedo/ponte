@@ -1,0 +1,49 @@
+name: Release
+
+# Ao enviar uma tag vX.Y.Z, gera o Ponte.exe numa máquina Windows limpa (testes +
+# PyInstaller, pelo mesmo build.ps1 de uso local) e publica na página de Releases.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Conferir se a tag bate com a versão do app
+        shell: pwsh
+        run: |
+          $version = python -c "import vpnbridge; print(vpnbridge.__version__)"
+          if ("v$version" -ne "${{ github.ref_name }}") {
+            throw "A tag ${{ github.ref_name }} nao bate com __version__ = $version (vpnbridge/__init__.py)."
+          }
+          "VERSION=$version" >> $env:GITHUB_ENV
+
+      - name: Gerar o .exe (testes + PyInstaller)
+        shell: pwsh
+        run: powershell -ExecutionPolicy Bypass -File .\build.ps1
+
+      - name: Publicar a Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Ponte ${{ env.VERSION }}
+          body: |
+            **Baixe o `Ponte.exe`** abaixo e abra: não precisa instalar.
+            O `.zip` traz o mesmo `.exe` com o guia `LEIA-ME.txt`.
+
+            Na primeira vez o Windows pode mostrar "O Windows protegeu o computador":
+            clique em **Mais informações → Executar assim mesmo** (o programa não tem
+            assinatura digital). Este `.exe` foi gerado pelo GitHub Actions a partir do
+            código desta versão.
+          files: |
+            dist/Ponte.exe
+            dist/Ponte-${{ env.VERSION }}.zip
