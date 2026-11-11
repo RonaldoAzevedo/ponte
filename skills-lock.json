@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "skills": {
+    "ux-copy": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "skillPath": "design/skills/ux-copy/SKILL.md",
+      "computedHash": "107740b4daeea92f9bed76fb89ad55b7dbe6733af418baeb797e6d577fe6faeb",
+      "installMode": "copy"
+    },
+    "ux-heuristics": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "skillPath": "ux-heuristics/SKILL.md",
+      "computedHash": "42bf5673212445b63ec0db611cfef58429946b9038b8ba9a6d4397d6161ff93c",
+      "installMode": "copy"
+    }
+  }
+}

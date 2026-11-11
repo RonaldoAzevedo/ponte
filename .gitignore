@@ -1,0 +1,8 @@
+.venv/
+build/
+dist/
+*.spec
+__pycache__/
+.pytest_cache/
+# skills de terceiros: a origem fica em skills-lock.json
+.claude/

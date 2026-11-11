@@ -1,0 +1,8 @@
+mitmproxy>=12.2,<13
+customtkinter>=6.0
+psutil>=7.0
+
+# desenvolvimento / build
+pillow>=11.0  # só para tools/make_icon.py
+pytest>=9.0
+pyinstaller>=6.20

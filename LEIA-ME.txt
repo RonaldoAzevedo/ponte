@@ -1,0 +1,43 @@
+PONTE
+=====
+
+Faz o celular de testes (iPhone ou Android) navegar pela VPN conectada no seu PC.
+Nao precisa instalar nada: e so abrir o Ponte.exe.
+
+COMO USAR
+1. Conecte a VPN no PC.
+2. Deixe o celular no MESMO Wi-Fi do PC.
+3. Feche o Burp, se estiver aberto (ele usa a mesma porta 8083).
+4. Abra o Ponte.exe. A tela "Abrindo o Ponte..." fica alguns segundos e some sozinha.
+5. Escolha iPhone ou Android no topo do passo a passo e siga as etapas:
+   configure o proxy MANUAL no Wi-Fi do celular com o Servidor e a Porta mostrados
+   em "Digite no celular".
+6. Abra um site no celular. Quando aparecer "Celular conectado", esta funcionando.
+
+Ao terminar, desligue o proxy no Wi-Fi do celular. Com o programa fechado,
+o celular fica sem internet nessa rede (o Ponte avisa ao fechar).
+
+SE NAO FUNCIONAR
+- Se nenhum celular conectar em 30 segundos, o Ponte mostra na tela o que conferir.
+- Confira se o celular esta no mesmo Wi-Fi e se a porta e a mesma da tela.
+  Em PC gerenciado, o firewall pode bloquear portas que a politica nao libera.
+- "VPN desconectada": reconecte a VPN no PC.
+- "Porta em uso": feche o Burp (ou o programa indicado) e clique em Iniciar.
+- O Windows mostrou "O Windows protegeu o computador": clique em "Mais informacoes"
+  e depois em "Executar assim mesmo" (o programa nao tem assinatura digital).
+
+TEMA
+- No rodape da janela: Sistema (segue o Windows), Claro ou Escuro. A escolha fica salva
+  e a tela de abertura usa o mesmo tema na proxima vez.
+
+MODOS
+- Passthrough (padrao): so encaminha o trafego. Nao precisa de certificado.
+- Inspecao: mostra cada requisicao HTTPS, mas exige instalar o certificado do
+  mitmproxy no celular (instrucoes na tela). No Android so funciona no Chrome ou
+  no build de debug do app. Se aparecer RECUSADO no log, o celular nao confia no
+  certificado (ou o app usa pinning): instale o certificado ou volte para Passthrough.
+
+TECLADO
+- Tab passa pelos controles; Enter ou Espaco aciona; setas trocam a opcao.
+
+Criado por Ronaldo.neto.
